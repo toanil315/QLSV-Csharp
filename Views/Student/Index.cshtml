@@ -1,0 +1,38 @@
+@model List<Student>;
+@{
+    ViewData["Title"] = "Home Page";
+    var students = Model;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Students Page</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">Welcome</a>.</p>
+    <table class="table">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Birthday</th>
+            <th>Class</th>
+            <th>
+                <a href="/Student/Create" class="btn btn-primary">Create</a>
+            </th>
+        </thead>
+        <tbody>
+            @foreach (var student in students)
+            {
+                <tr>
+                    <td>@student.Id</td>
+                    <td>@student.Name</td>
+                    <td>@student.Age</td>
+                    <td>@student.Birthday</td>
+                    <td>@student.Class.ClassName</td>
+                    <td>
+                        <a href="/Student/Update/@student.Id" class="btn btn-success">Update</a>
+                        <a href="/Student/Delete/@student.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
